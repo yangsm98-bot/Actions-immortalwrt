@@ -23,3 +23,8 @@ git clone https://github.com/lkiuyu/luci-app-cpu-status package/luci-app-cpu-sta
 git clone https://github.com/gSpotx2f/luci-app-cpu-status-mini package/luci-app-cpu-status-mini
 git clone https://github.com/lkiuyu/luci-app-temp-status package/luci-app-temp-status
 git clone https://github.com/lkiuyu/DbusSmsForwardCPlus package/DbusSmsForwardCPlus
+
+
+# 修复 APK 版本号问题（核心）
+find package -name Makefile | xargs sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g'
+find feeds -name Makefile | xargs sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g'
