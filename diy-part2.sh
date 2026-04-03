@@ -19,7 +19,12 @@ sed -i 's/luci-theme-material/luci-theme-argon/g' feeds/luci/collections/luci/Ma
 
 #temp
 git clone https://github.com/lkiuyu/luci-app-cpu-perf package/luci-app-cpu-perf
-git clone https://github.com/lkiuyu/luci-app-cpu-status package/luci-app-cpu-status
+git clone https://github.com/Eric-ysi/luci-app-cpu-status package/luci-app-cpu-status
 git clone https://github.com/gSpotx2f/luci-app-cpu-status-mini package/luci-app-cpu-status-mini
 git clone https://github.com/lkiuyu/luci-app-temp-status package/luci-app-temp-status
 git clone https://github.com/lkiuyu/DbusSmsForwardCPlus package/DbusSmsForwardCPlus
+
+# 修复 PKG_VERSION 带 -release 的写法
+find package feeds -name Makefile | while read file; do
+    sed -i 's/PKG_VERSION:=\([0-9\.]\+\)-\([0-9]\+\)/PKG_VERSION:=\1\nPKG_RELEASE:=\2/' "$file"
+done
